@@ -5,25 +5,25 @@ const mysql = require('mysql');
 const path = require('path');
 const app = express();
 
-const {getHomePage} = require('./routes/index');
-const {addPlayerPage, addPlayer, deletePlayer, editPlayer, editPlayerPage} = require('./routes/player');
+const { getHomePage } = require('./routes/index');
+const { addPlayerPage, addPlayer, deletePlayer, editPlayer, editPlayerPage } = require('./routes/player');
 const port = 5000;
 
 // create connection to database
 // the mysql.createConnection function takes in a configuration object which contains host, user, password and the database name.
-const db = mysql.createConnection ({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'socka'
+const db = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'socka'
 });
 
 // connect to database
 db.connect((err) => {
-    if (err) {
-        throw err;
-    }
-    console.log('Connected to database');
+  if (err) {
+    throw err;
+  }
+  console.log('Connected to database');
 });
 global.db = db;
 
@@ -47,5 +47,5 @@ app.post('/edit/:id', editPlayer);
 
 // set the app to listen on the port
 app.listen(port, () => {
-    console.log(`Server running on port: ${port}`);
+  console.log(`Server running on port: ${port}`);
 });
